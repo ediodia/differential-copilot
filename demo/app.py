@@ -4,8 +4,15 @@ Differential Co-Pilot - Streamlit Demo UI
 A thin, demo-only front end over the ADK multi-agent pipeline. Built for
 the Kaggle AI Agents Capstone video walkthrough.
 
-Run with:
+Run with (Gemini API key):
     export GOOGLE_API_KEY=your_key_here
+    streamlit run demo/app.py
+
+Run with (Vertex AI, e.g. using Google Cloud free trial credit):
+    gcloud auth application-default login
+    export GOOGLE_GENAI_USE_VERTEXAI=true
+    export GOOGLE_CLOUD_PROJECT=your-project-id
+    export GOOGLE_CLOUD_LOCATION=us-central1
     streamlit run demo/app.py
 
 This is a portfolio/demo system using synthetic data only. It is
@@ -29,6 +36,15 @@ from agents.pipeline import root_agent
 from agents.security_screen import screen_input
 
 st.set_page_config(page_title="Differential Co-Pilot", page_icon="🩺", layout="wide")
+
+
+def has_credentials() -> bool:
+    """True if either a Gemini API key or Vertex AI config is present."""
+    using_vertex = os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in ("true", "1")
+    has_api_key = bool(os.environ.get("GOOGLE_API_KEY"))
+    has_vertex_config = using_vertex and bool(os.environ.get("GOOGLE_CLOUD_PROJECT"))
+    return has_api_key or has_vertex_config
+
 
 PRESET_CASE = """Patient: 54-year-old male
 Presenting symptoms: chest discomfort, mild shortness of breath, fatigue, duration 3 days
@@ -96,8 +112,8 @@ co-founded, reimplemented here clean-room with synthetic data for this
 public capstone.
         """
     )
-    if not os.environ.get("GOOGLE_API_KEY"):
-        st.error("GOOGLE_API_KEY not set in environment.")
+    if not has_credentials():
+        st.error("No credentials found. Set GOOGLE_API_KEY or configure Vertex AI.")
 
 # ---- Input ----
 st.subheader("1. Enter a synthetic case")
@@ -121,8 +137,8 @@ case_text = st.text_area(
 run_clicked = st.button("Run Differential Co-Pilot", type="primary")
 
 if run_clicked:
-    if not os.environ.get("GOOGLE_API_KEY"):
-        st.error("Set GOOGLE_API_KEY before running.")
+    if not has_credentials():
+        st.error("No credentials found. Set GOOGLE_API_KEY or configure Vertex AI.")
     else:
         st.subheader("2. Pre-LLM security screen")
         screen_result = screen_input(case_text)

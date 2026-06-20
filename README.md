@@ -107,7 +107,24 @@ requirements.txt
 git clone <this-repo-url>
 cd quorum-capstone
 pip install -r requirements.txt
-export GOOGLE_API_KEY=your_key_here   # never commit this; see note below
+```
+
+Authenticate using **either** of the following (never commit credentials,
+see note below):
+
+**Option A: Gemini API key**
+```bash
+export GOOGLE_API_KEY=your_key_here
+```
+
+**Option B: Vertex AI** (e.g. using Google Cloud free trial credit, since
+the Gemini API's own prepay billing is a separate balance from Cloud's
+general $300 welcome credit)
+```bash
+gcloud auth application-default login
+export GOOGLE_GENAI_USE_VERTEXAI=true
+export GOOGLE_CLOUD_PROJECT=your-project-id
+export GOOGLE_CLOUD_LOCATION=us-central1
 ```
 
 Run the CLI demo against the bundled synthetic case:
@@ -127,8 +144,9 @@ in a case containing both a PII pattern and a prompt-injection attempt, so
 the security screen's blocking behavior can be demonstrated live.
 
 > 🚨 No API keys or credentials are stored in this repository. The app reads
-> `GOOGLE_API_KEY` from the environment only. If you fork this, never commit
-> a `.env` file or hardcode a key into the source.
+> `GOOGLE_API_KEY` or Vertex AI environment variables from the environment
+> only. If you fork this, never commit a `.env` file, a service account
+> JSON key, or a hardcoded key into the source.
 
 ## A note on origin
 

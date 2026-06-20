@@ -1,8 +1,15 @@
 """
 Differential Co-Pilot - Demo Runner
 
-Usage:
+Usage (Gemini API key):
     export GOOGLE_API_KEY=your_key_here
+    python3 demo/run_demo.py
+
+Usage (Vertex AI, e.g. using Google Cloud free trial credit):
+    gcloud auth application-default login
+    export GOOGLE_GENAI_USE_VERTEXAI=true
+    export GOOGLE_CLOUD_PROJECT=your-project-id
+    export GOOGLE_CLOUD_LOCATION=us-central1
     python3 demo/run_demo.py
 
 Runs the full Reasoning -> Retrieval -> Verifier pipeline against a
@@ -38,12 +45,27 @@ History: hypertension, current smoker
 
 
 async def main():
-    if not os.environ.get("GOOGLE_API_KEY"):
+    using_vertex = os.environ.get("GOOGLE_GENAI_USE_VERTEXAI", "").lower() in ("true", "1")
+    has_api_key = bool(os.environ.get("GOOGLE_API_KEY"))
+    has_vertex_config = using_vertex and os.environ.get("GOOGLE_CLOUD_PROJECT")
+
+    if not has_api_key and not has_vertex_config:
         print(
-            "GOOGLE_API_KEY not set. Set it before running:\n"
-            "  export GOOGLE_API_KEY=your_key_here\n"
+            "No credentials found. Set up one of the following before running:\n\n"
+            "  Gemini API key:\n"
+            "    export GOOGLE_API_KEY=your_key_here\n\n"
+            "  Vertex AI (e.g. Google Cloud free trial credit):\n"
+            "    gcloud auth application-default login\n"
+            "    export GOOGLE_GENAI_USE_VERTEXAI=true\n"
+            "    export GOOGLE_CLOUD_PROJECT=your-project-id\n"
+            "    export GOOGLE_CLOUD_LOCATION=us-central1\n"
         )
         return
+
+    if has_vertex_config:
+        print(f"Using Vertex AI (project: {os.environ.get('GOOGLE_CLOUD_PROJECT')})\n")
+    else:
+        print("Using Gemini API key\n")
 
     runner = InMemoryRunner(agent=root_agent, app_name="differential_copilot")
     session = await runner.session_service.create_session(
