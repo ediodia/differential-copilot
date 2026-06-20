@@ -68,6 +68,141 @@ GUIDELINES = [
         "risk_factors": ["hypertension", "smoking"],
         "category": "risk_amplifier",
     },
+
+    # --- Abdominal ---
+    {
+        "id": "ref-006",
+        "topic": "abdominal_pain_appendicitis",
+        "summary": (
+            "Periumbilical pain migrating to the right lower quadrant, accompanied "
+            "by nausea, vomiting, and low-grade fever, is a classic pattern warranting "
+            "consideration of appendicitis, particularly in younger patients."
+        ),
+        "associated_symptoms": ["abdominal pain", "nausea", "vomiting", "fever", "loss of appetite"],
+        "risk_factors": ["young age", "no prior appendectomy"],
+        "category": "gastrointestinal",
+    },
+    {
+        "id": "ref-007",
+        "topic": "abdominal_pain_gallbladder",
+        "summary": (
+            "Right upper quadrant abdominal pain, often after fatty meals, with "
+            "nausea and vomiting may suggest biliary etiology such as cholecystitis "
+            "or cholelithiasis, particularly in patients with known risk factors."
+        ),
+        "associated_symptoms": ["abdominal pain", "nausea", "vomiting", "pain after eating"],
+        "risk_factors": ["obesity", "female sex", "prior gallstones", "rapid weight loss"],
+        "category": "gastrointestinal",
+    },
+    {
+        "id": "ref-008",
+        "topic": "abdominal_pain_gastroenteritis",
+        "summary": (
+            "Diffuse abdominal cramping with nausea, vomiting, and diarrhea, often "
+            "of acute onset, is commonly associated with viral or bacterial "
+            "gastroenteritis, especially with a history of recent exposure to "
+            "contaminated food or sick contacts."
+        ),
+        "associated_symptoms": ["abdominal pain", "nausea", "vomiting", "diarrhea", "fever"],
+        "risk_factors": ["recent travel", "sick contacts", "food exposure"],
+        "category": "infectious",
+    },
+
+    # --- Neurological ---
+    {
+        "id": "ref-009",
+        "topic": "headache_migraine",
+        "summary": (
+            "Unilateral, throbbing headache associated with nausea, light "
+            "sensitivity, or visual aura, particularly with a personal or family "
+            "history of similar episodes, is consistent with migraine."
+        ),
+        "associated_symptoms": ["headache", "nausea", "light sensitivity", "visual aura"],
+        "risk_factors": ["family history of migraine", "female sex", "hormonal triggers"],
+        "category": "neurological",
+    },
+    {
+        "id": "ref-010",
+        "topic": "headache_red_flags",
+        "summary": (
+            "Sudden-onset 'worst headache of life,' headache with fever and neck "
+            "stiffness, or headache with new neurological deficits are red-flag "
+            "presentations warranting urgent evaluation for causes such as "
+            "subarachnoid hemorrhage or meningitis, regardless of overall pretest "
+            "probability."
+        ),
+        "associated_symptoms": ["sudden severe headache", "neck stiffness", "fever", "neurological deficit"],
+        "risk_factors": ["hypertension", "anticoagulant use"],
+        "category": "neurological_red_flag",
+    },
+    {
+        "id": "ref-011",
+        "topic": "dizziness_vestibular",
+        "summary": (
+            "Episodic spinning dizziness triggered by head position changes, "
+            "without associated neurological deficits, is commonly associated with "
+            "benign vestibular causes, though central causes should be excluded "
+            "when other symptoms are present."
+        ),
+        "associated_symptoms": ["dizziness", "vertigo", "nausea", "imbalance"],
+        "risk_factors": ["prior vestibular episodes", "recent viral illness"],
+        "category": "neurological",
+    },
+
+    # --- Pregnancy / reproductive ---
+    {
+        "id": "ref-012",
+        "topic": "pregnancy_early_symptoms",
+        "summary": (
+            "Nausea, vomiting, fatigue, mood changes, and a missed or delayed "
+            "menstrual period in a patient of reproductive age with recent sexual "
+            "activity should prompt consideration of pregnancy as a primary "
+            "differential, alongside pregnancy testing as an early step."
+        ),
+        "associated_symptoms": ["nausea", "vomiting", "fatigue", "mood changes", "missed period", "moody"],
+        "risk_factors": ["reproductive age", "sexually active", "no reliable contraception"],
+        "category": "reproductive",
+    },
+    {
+        "id": "ref-013",
+        "topic": "pregnancy_ectopic_red_flag",
+        "summary": (
+            "Lower abdominal pain with a missed period and vaginal spotting in a "
+            "patient with a positive or unknown pregnancy status is a red flag for "
+            "ectopic pregnancy and warrants urgent evaluation, as this is a "
+            "potentially life-threatening 'can't miss' diagnosis."
+        ),
+        "associated_symptoms": ["abdominal pain", "missed period", "vaginal spotting", "dizziness"],
+        "risk_factors": ["prior ectopic pregnancy", "pelvic inflammatory disease history", "IUD use"],
+        "category": "reproductive_red_flag",
+    },
+
+    # --- Infectious / systemic ---
+    {
+        "id": "ref-014",
+        "topic": "fever_viral_syndrome",
+        "summary": (
+            "Fever with fatigue, body aches, and mild upper respiratory symptoms "
+            "in the absence of localizing findings is commonly consistent with a "
+            "self-limited viral syndrome, though duration and severity should guide "
+            "further workup."
+        ),
+        "associated_symptoms": ["fever", "fatigue", "body aches", "cough", "sore throat"],
+        "risk_factors": ["sick contacts", "recent travel"],
+        "category": "infectious",
+    },
+    {
+        "id": "ref-015",
+        "topic": "fatigue_thyroid",
+        "summary": (
+            "Persistent fatigue accompanied by weight change, mood changes, and "
+            "temperature intolerance may reflect thyroid dysfunction, particularly "
+            "in patients with a personal or family history of thyroid disease."
+        ),
+        "associated_symptoms": ["fatigue", "weight change", "mood changes", "moody"],
+        "risk_factors": ["family history of thyroid disease", "female sex"],
+        "category": "endocrine",
+    },
 ]
 
 

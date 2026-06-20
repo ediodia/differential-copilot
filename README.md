@@ -53,7 +53,9 @@ happens downstream.
 
 **3. Retrieval agent** (`agents/retrieval_agent.py`)
 Calls an MCP server (`mcp_server/server.py`) exposing a single tool,
-`lookup_guidelines`, over a small synthetic reference dataset. Maps
+`lookup_guidelines`, over a synthetic reference dataset spanning cardiac,
+pulmonary, gastrointestinal, neurological, reproductive, infectious, and
+endocrine presentations. Maps
 supporting and contradicting evidence back onto each consideration from the
 Reasoning agent, and is instructed to surface weak or contradicting
 evidence explicitly rather than omit it.
@@ -141,8 +143,9 @@ RAG sources, or production architecture details from that project.
 
 This is a demo, not a production system. Known simplifications:
 
-- The "guideline" data is five hand-written synthetic entries, not a real
-  clinical knowledge base.
+- The "guideline" data is fifteen hand-written synthetic entries spanning
+  cardiac, pulmonary, gastrointestinal, neurological, reproductive,
+  infectious, and endocrine categories, not a real clinical knowledge base.
 - The security screen is regex-based and intentionally simple; a production
   system would need a more robust PII/injection detection layer.
 - There is no persistence, authentication, or audit logging, all
