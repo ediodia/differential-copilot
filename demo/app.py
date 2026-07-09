@@ -108,7 +108,7 @@ instead of a black box.
 
 ---
 Built on architecture concepts from a hospital-only clinical AI platform I
-co-founded, reimplemented here clean-room with synthetic data for this
+currently lead, reimplemented here clean-room with synthetic data for this
 public capstone.
         """
     )
