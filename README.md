@@ -153,7 +153,7 @@ the security screen's blocking behavior can be demonstrated live.
 The core ideas here, differential expansion instead of diagnosis,
 multi-agent deliberation, an explicit omission-prevention and contestability
 layer, are adapted from architecture concepts in a hospital-only clinical AI
-platform I co-founded. This repository is a clean-room rebuild for this
+platform I currently lead. This repository is a clean-room rebuild for this
 public capstone: new code, synthetic data only, and no proprietary prompts,
 RAG sources, or production architecture details from that project.
 
